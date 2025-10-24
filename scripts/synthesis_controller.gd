@@ -76,7 +76,26 @@ func ingredients_cursor_change(cx,cy):
 func get_ing_cursor_pos():
 	return Vector2(ing_c%15 * 48, floor(ing_c/15) * 48)
 func select_ingredient():
+	#Make sure this specific invent item hasn't already been added
+	#Get the remaining ingredients required in the recipe
 	var recipe_copy = item_controller.get_recipe()
+	for item in used_ingredients:
+		#This item has already been selected
+		if ing_c == item['index']:
+			return
+		if item['item']['id'] in recipe_copy:
+			recipe_copy.erase(item['id'])
+
+	if G.inventory[ing_c]['id'] in recipe_copy:
+		recipe_copy.erase(G.inventory[ing_c]['id'])
+		used_ingredients.append({
+			'index': ing_c,
+			'item': G.inventory[ing_c]
+		})
+
+	#The recipe has been completed :)
+	if recipe_copy.size() == 0:
+		state == STATES.WAIT_ANIMATION
 	
 func select_recipe():
 	state = STATES.CHOOSE_INGREDIENTS

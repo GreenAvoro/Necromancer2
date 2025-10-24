@@ -13,6 +13,7 @@ extends Control
 @onready var invent_cursor: AnimatedSprite2D = %InventCursor
 @onready var recipe_sprite: TextureRect = %RecipeSprite
 @onready var recipe_name: Label = %RecipeName
+@onready var properties_list: VBoxContainer = %PropertiesList
 
 func _ready() -> void:
 	synth_controller.state = synth_controller.STATES.CHOOSE_RECIPE
@@ -44,5 +45,14 @@ func _update_ui():
 	invent_cursor.position = synth_controller.get_ing_cursor_pos()+Vector2(40,40)
 	recipe_name.text = item_controller.get_selected()['name']
 	recipe_sprite.texture.region = Rect2(float(item_controller.get_selected()['region_x']), float(item_controller.get_selected()['region_y']),48.0,48.0)
+	#Clear properties from UI
+	for c in properties_list.get_children():
+		c.queue_free()
+	#Add properties from used items
+	for prop in synth_controller.get_properties():
+		var label = Label.new()
+		label.text = prop['name']
+		properties_list.add_child(label)
+
 func _toggle_ingredients_screen():
 	%IngredientsScreen.visible = !%IngredientsScreen.visible
