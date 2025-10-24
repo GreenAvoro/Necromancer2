@@ -76,7 +76,8 @@ func ingredients_cursor_change(cx,cy):
 func get_ing_cursor_pos():
 	return Vector2(ing_c%15 * 48, floor(ing_c/15) * 48)
 func select_ingredient():
-	pass
+	var recipe_copy = item_controller.get_recipe()
+	
 func select_recipe():
 	state = STATES.CHOOSE_INGREDIENTS
 	toggle_ingredients_screen.emit()

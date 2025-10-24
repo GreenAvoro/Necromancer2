@@ -53,3 +53,5 @@ func get_inventory_icons():
 		icons.append(recipe_icon)
 		i += 1
 	return icons
+func get_recipe():
+	return registry.get_recipe()
