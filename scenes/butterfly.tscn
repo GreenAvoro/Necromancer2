@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccmmgkr1wsyf7"]
+
+[ext_resource type="Script" uid="uid://c0b6f4td2pcg7" path="res://scripts/butterfly.gd" id="1_j3cst"]
+[ext_resource type="Texture2D" uid="uid://bp4b38eyail31" path="res://assets/tilesheet.png" id="1_xwo5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl2u0"]
+size = Vector2(156, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au15p"]
+atlas = ExtResource("1_xwo5h")
+region = Rect2(192, 336, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vowy"]
+atlas = ExtResource("1_xwo5h")
+region = Rect2(208, 336, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h25yy"]
+atlas = ExtResource("1_xwo5h")
+region = Rect2(224, 336, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcb6n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au15p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vowy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h25yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vowy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Butterfly" type="Area2D"]
+script = ExtResource("1_j3cst")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gl2u0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_vcb6n")
+autoplay = "default"
+frame_progress = 0.834446

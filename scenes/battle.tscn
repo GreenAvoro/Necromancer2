@@ -1,0 +1,449 @@
+[gd_scene load_steps=24 format=3 uid="uid://c0ld64unu557c"]
+
+[ext_resource type="Script" uid="uid://wt5kmw357gfq" path="res://scripts/battle.gd" id="1_dsyrj"]
+[ext_resource type="Shader" uid="uid://5u0suyo64eey" path="res://shaders/battle.gdshader" id="1_h7ve7"]
+[ext_resource type="Texture2D" uid="uid://c0316dafalvxn" path="res://assets/cloud_1.png" id="3_dtkac"]
+[ext_resource type="Texture2D" uid="uid://bp4b38eyail31" path="res://assets/tilesheet.png" id="4_7ymxg"]
+[ext_resource type="Texture2D" uid="uid://cwji21hkjf6db" path="res://assets/nine.png" id="4_e6gs6"]
+[ext_resource type="Texture2D" uid="uid://i3wkloyf2i6e" path="res://assets/cloud_2.png" id="4_g4fui"]
+[ext_resource type="Theme" uid="uid://b7no8wxgdbvd8" path="res://resources/main.tres" id="5_be6df"]
+[ext_resource type="Script" uid="uid://bp8gnpgpctmqy" path="res://scripts/battle_items.gd" id="6_sc1v6"]
+[ext_resource type="AudioStream" uid="uid://dp7veft18gbl7" path="res://assets/sounds/Battle-memoria.mp3" id="9_35xhp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pf8i"]
+shader = ExtResource("1_h7ve7")
+
+[sub_resource type="Gradient" id="Gradient_j0r8y"]
+colors = PackedColorArray(0.258386, 0.546796, 0.671468, 1, 0.6204, 0.89206, 0.94, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_plkwa"]
+gradient = SubResource("Gradient_j0r8y")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_irii3"]
+offsets = PackedFloat32Array(0.123377, 1)
+colors = PackedColorArray(0.180933, 0.4, 0.152, 1, 0.339972, 0.71, 0.2911, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f8mb5"]
+gradient = SubResource("Gradient_irii3")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yahae"]
+atlas = ExtResource("4_7ymxg")
+region = Rect2(576, 1104, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bqo3"]
+atlas = ExtResource("4_7ymxg")
+region = Rect2(576, 1104, 48, 48)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6p14r"]
+
+[sub_resource type="Animation" id="Animation_m3bfe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clouds:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(583.853, -1.13702)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleCanvas/AllyPanel/AllyInfo1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BattleCanvas/AllyPanel/AllyInfo2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 64)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BattleCanvas/AllyPanel/AllyInfo3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 112)]
+}
+
+[sub_resource type="Animation" id="Animation_o75up"]
+resource_name = "clouds"
+length = 40.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clouds:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(583.853, -1.13702), Vector2(-519.47, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pe4o1"]
+resource_name = "player_active_1"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleCanvas/AllyPanel/AllyInfo1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(24, 16), Vector2(44, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_fh044"]
+resource_name = "player_active_2"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleCanvas/AllyPanel/AllyInfo2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(24, 64), Vector2(44, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_tod57"]
+resource_name = "player_active_3"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleCanvas/AllyPanel/AllyInfo3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(24, 112), Vector2(44, 112)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07n75"]
+_data = {
+&"RESET": SubResource("Animation_m3bfe"),
+&"clouds": SubResource("Animation_o75up"),
+&"player_active_1": SubResource("Animation_pe4o1"),
+&"player_active_2": SubResource("Animation_fh044"),
+&"player_active_3": SubResource("Animation_tod57")
+}
+
+[node name="Battle" type="Node2D"]
+material = SubResource("ShaderMaterial_2pf8i")
+script = ExtResource("1_dsyrj")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_top = -120.0
+offset_right = 1152.0
+offset_bottom = 224.0
+color = Color(0.1131, 0.756465, 0.87, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect2"]
+layout_mode = 0
+offset_right = 1160.0
+offset_bottom = 328.0
+texture = SubResource("GradientTexture2D_plkwa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 200.0
+offset_right = 1152.0
+offset_bottom = 528.0
+color = Color(0.292088, 0.61, 0.2501, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_right = 1160.0
+offset_bottom = 312.0
+texture = SubResource("GradientTexture2D_f8mb5")
+
+[node name="Clouds" type="Node2D" parent="."]
+position = Vector2(583.853, -1.13702)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="Cloud" type="Sprite2D" parent="Clouds"]
+texture = ExtResource("3_dtkac")
+
+[node name="Cloud2" type="Sprite2D" parent="Clouds"]
+position = Vector2(-81.9632, 10)
+texture = ExtResource("3_dtkac")
+
+[node name="Cloud3" type="Sprite2D" parent="Clouds"]
+position = Vector2(106.037, 10)
+texture = ExtResource("4_g4fui")
+
+[node name="Cloud4" type="Sprite2D" parent="Clouds"]
+position = Vector2(276, 0)
+texture = ExtResource("3_dtkac")
+
+[node name="Cloud5" type="Sprite2D" parent="Clouds"]
+position = Vector2(194.037, 10)
+texture = ExtResource("3_dtkac")
+
+[node name="Cloud6" type="Sprite2D" parent="Clouds"]
+position = Vector2(382.037, 10)
+texture = ExtResource("4_g4fui")
+
+[node name="Tree4" type="Sprite2D" parent="."]
+position = Vector2(48, 176)
+texture = ExtResource("4_7ymxg")
+region_enabled = true
+region_rect = Rect2(768, 0, 48, 96)
+
+[node name="Tree5" type="Sprite2D" parent="."]
+position = Vector2(1080, 160)
+texture = ExtResource("4_7ymxg")
+region_enabled = true
+region_rect = Rect2(768, 0, 48, 96)
+
+[node name="Tree6" type="Sprite2D" parent="."]
+position = Vector2(1056, 176)
+texture = ExtResource("4_7ymxg")
+region_enabled = true
+region_rect = Rect2(768, 0, 48, 96)
+
+[node name="Tree7" type="Sprite2D" parent="."]
+position = Vector2(16, 200)
+texture = ExtResource("4_7ymxg")
+region_enabled = true
+region_rect = Rect2(768, 0, 48, 96)
+
+[node name="Tree8" type="Sprite2D" parent="."]
+position = Vector2(32, 296)
+scale = Vector2(2, 2)
+texture = ExtResource("4_7ymxg")
+region_enabled = true
+region_rect = Rect2(768, 0, 48, 96)
+
+[node name="Tree3" type="Sprite2D" parent="."]
+position = Vector2(-16, 416)
+scale = Vector2(4, 4)
+texture = ExtResource("4_7ymxg")
+region_enabled = true
+region_rect = Rect2(768, 0, 48, 96)
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(1128, 328)
+scale = Vector2(4, 4)
+texture = ExtResource("4_7ymxg")
+region_enabled = true
+region_rect = Rect2(768, 0, 48, 96)
+
+[node name="BattleCanvas" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="NinePatchRect" parent="BattleCanvas"]
+offset_top = 472.0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_e6gs6")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="OptionPanel" type="NinePatchRect" parent="BattleCanvas"]
+offset_left = 236.0
+offset_top = 476.0
+offset_right = 380.0
+offset_bottom = 644.0
+texture = ExtResource("4_e6gs6")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleCanvas/OptionPanel"]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 192.0
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 10
+
+[node name="OptionsList" type="VBoxContainer" parent="BattleCanvas/OptionPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer"]
+layout_mode = 2
+
+[node name="Cursor" type="TextureRect" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_yahae")
+stretch_mode = 3
+
+[node name="Attack" type="Label" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="MarginContainer2" type="MarginContainer" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer2"]
+layout_mode = 2
+
+[node name="Cursor" type="TextureRect" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer2/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_6bqo3")
+stretch_mode = 3
+
+[node name="Item" type="Label" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Item"
+
+[node name="MarginContainer3" type="MarginContainer" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer3"]
+layout_mode = 2
+
+[node name="Cursor" type="TextureRect" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer3/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_6bqo3")
+stretch_mode = 3
+
+[node name="Defend" type="Label" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+text = "Defend"
+
+[node name="MarginContainer4" type="MarginContainer" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer4"]
+layout_mode = 2
+
+[node name="Cursor" type="TextureRect" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer4/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_6bqo3")
+stretch_mode = 3
+
+[node name="Escape" type="Label" parent="BattleCanvas/OptionPanel/MarginContainer/OptionsList/MarginContainer4/HBoxContainer"]
+layout_mode = 2
+text = "Escape"
+
+[node name="AllyPanel" type="Panel" parent="BattleCanvas"]
+offset_top = 472.0
+offset_right = 232.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6p14r")
+
+[node name="AllyInfo1" type="VBoxContainer" parent="BattleCanvas/AllyPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 184.0
+offset_bottom = 53.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="BattleCanvas/AllyPanel/AllyInfo1"]
+layout_mode = 2
+text = "Lulu"
+
+[node name="ProgressBar" type="ProgressBar" parent="BattleCanvas/AllyPanel/AllyInfo1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_be6df")
+show_percentage = false
+
+[node name="AllyInfo2" type="VBoxContainer" parent="BattleCanvas/AllyPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 184.0
+offset_bottom = 101.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="BattleCanvas/AllyPanel/AllyInfo2"]
+layout_mode = 2
+text = "Sarah"
+
+[node name="ProgressBar" type="ProgressBar" parent="BattleCanvas/AllyPanel/AllyInfo2"]
+layout_mode = 2
+size_flags_vertical = 3
+show_percentage = false
+
+[node name="AllyInfo3" type="VBoxContainer" parent="BattleCanvas/AllyPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 112.0
+offset_right = 184.0
+offset_bottom = 149.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="BattleCanvas/AllyPanel/AllyInfo3"]
+layout_mode = 2
+text = "Cordellia"
+
+[node name="ProgressBar" type="ProgressBar" parent="BattleCanvas/AllyPanel/AllyInfo3"]
+layout_mode = 2
+size_flags_vertical = 3
+show_percentage = false
+
+[node name="BattleItems" type="NinePatchRect" parent="BattleCanvas"]
+visible = false
+offset_left = 380.0
+offset_top = 476.0
+offset_right = 1148.0
+offset_bottom = 644.0
+texture = ExtResource("4_e6gs6")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+script = ExtResource("6_sc1v6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_07n75")
+}
+autoplay = "clouds"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_35xhp")
+volume_db = -10.0
+autoplay = true

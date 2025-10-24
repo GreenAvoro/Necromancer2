@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://cy8ned8h8gqtr"]
+
+[ext_resource type="Script" uid="uid://bpsasjntyvvsf" path="res://scripts/ally.gd" id="1_txq0a"]
+[ext_resource type="Texture2D" uid="uid://c3i7pq5nt5je2" path="res://assets/animations/lulu_attack.png" id="2_adsy0"]
+[ext_resource type="Texture2D" uid="uid://b1frnhp6lpu8n" path="res://assets/lulu_b.png" id="2_rckwi"]
+[ext_resource type="Texture2D" uid="uid://uyrahdvmebr8" path="res://assets/lily_b.png" id="3_wsw2x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpr3p"]
+atlas = ExtResource("2_adsy0")
+region = Rect2(0, 0, 41, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edicg"]
+atlas = ExtResource("2_adsy0")
+region = Rect2(41, 0, 41, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxpvb"]
+atlas = ExtResource("2_adsy0")
+region = Rect2(82, 0, 41, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uha2o"]
+atlas = ExtResource("2_rckwi")
+region = Rect2(0, 0, 41, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f6m1"]
+atlas = ExtResource("3_wsw2x")
+region = Rect2(0, 0, 31, 54)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8kage"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpr3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edicg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxpvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxpvb")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uha2o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f6m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f6m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f6m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f6m1")
+}],
+"loop": false,
+"name": &"use_item",
+"speed": 5.0
+}]
+
+[node name="Ally" type="Node2D"]
+script = ExtResource("1_txq0a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8kage")
+animation = &"use_item"
+autoplay = "idle"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

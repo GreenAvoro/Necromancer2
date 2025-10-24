@@ -1,0 +1,13 @@
+output_id,input_id
+potion,grass
+potion,grass
+potion,water
+bomb,water
+bomb,gunpowder
+lightning_bomb,bomb
+lightning_bomb,lightning_bottle
+magic_mirror,lightning_bottle
+magic_mirror,gunpowder
+poison_flask,water
+poison_flask,gunpowder
+poison_flask,bone

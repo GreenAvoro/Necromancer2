@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://7oyaw2novhav"
+
+[deps]
+
+files=["res://resources/items.name.translation", "res://resources/items.category.translation", "res://resources/items.sprite.translation", "res://resources/items.sprite.translation", "res://resources/items.description.translation", "res://resources/items.phys.translation", "res://resources/items.mag.translation", "res://resources/items.healing.translation"]
+
+source_file="res://resources/items.csv"
+dest_files=["res://resources/items.name.translation", "res://resources/items.category.translation", "res://resources/items.sprite.translation", "res://resources/items.sprite.translation", "res://resources/items.description.translation", "res://resources/items.phys.translation", "res://resources/items.mag.translation", "res://resources/items.healing.translation"]
+
+[params]
+
+compress=true
+delimiter=0

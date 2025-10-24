@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cknmal75onf3l"]
+
+[ext_resource type="Texture2D" uid="uid://dxaul1k4c7vj5" path="res://assets/animations/sarah_attack.png" id="1_7kqwo"]
+[ext_resource type="Texture2D" uid="uid://sfikqu7cdp0v" path="res://assets/sarah_b.png" id="2_ejsj1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dblyl"]
+atlas = ExtResource("1_7kqwo")
+region = Rect2(0, 0, 41, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqmfn"]
+atlas = ExtResource("1_7kqwo")
+region = Rect2(41, 0, 41, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddq32"]
+atlas = ExtResource("1_7kqwo")
+region = Rect2(82, 0, 41, 66)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dblyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqmfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddq32")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ejsj1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

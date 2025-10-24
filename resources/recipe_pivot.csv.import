@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://by5ef08ovnoe7"
+
+[deps]
+
+files=["res://resources/recipe_pivot.input.translation"]
+
+source_file="res://resources/recipe_pivot.csv"
+dest_files=["res://resources/recipe_pivot.input.translation"]
+
+[params]
+
+compress=true
+delimiter=0

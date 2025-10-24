@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bde4o0a8rkdxy"]
+
+[ext_resource type="Texture2D" uid="uid://bp4b38eyail31" path="res://assets/tilesheet.png" id="1_padq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7ssy"]
+atlas = ExtResource("1_padq6")
+region = Rect2(0, 1488, 48, 48)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_padq6"]
+load_path = "res://.godot/imported/tilesheet.png-707bc36167c455c754550fab1ba9362a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqii6"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_padq6")
+region = Rect2(48, 1440, 48, 48)
+
+[node name="RecipeIcon" type="Control"]
+layout_mode = 3
+anchor_right = 0.042
+anchor_bottom = 0.148
+offset_right = -0.384003
+offset_bottom = -47.904
+
+[node name="RecipeBackground" type="TextureRect" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -48.0
+texture = SubResource("AtlasTexture_r7ssy")
+
+[node name="ItemSprite" type="TextureRect" parent="RecipeBackground"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_aqii6")

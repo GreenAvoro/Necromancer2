@@ -1,0 +1,15 @@
+id,name,category,sprite_pos_x,sprite_pos_y,description,phys_power,mag_power,healing_power
+potion,Potion,consumable,96,1488,For rejuvenating life,0,0,10
+bomb,Bomb,battle,48,1488,Handle with care,10,,
+lightning_bomb,Lightning bomb,battle,480,1488,This one’s real nasty!,0,0,0
+grass,Grass,material,288,1488,Achoo,0,0,0
+water,Water,material,192,1488,The base ingredient for most synthesis,0,0,0
+gunpowder,Gunpowder,material,624,1488,Explodes when struck hard,0,0,0
+lightning_bottle,Lightning in a bottle,material,480,1488,Lightning in a bottle,0,0,0
+poison_flask,Poison flask,battle,384,1488,DO NOT OPEN INSIDE!,0,0,0
+bone,Bone,material,576,1488,Bones of cute monsters,0,0,0
+fire_bomb,Fire bomb,battle,528,1488,Extra powerful bomb,0,0,0
+ice_bomb,Ice bomb,battle,336,1488,I don’t know how this one works…,0,0,0
+elixer,Elixer,consumable,672,1488,Seems to fully restore ones vitality,0,0,0
+gear,Gear,synthesis,720,1488,A metal mechanism from a past civilisation,0,0,0
+magic_mirror,Magic mirror,synthesis,432,1488,Shows a reflection of everything except people,0,0,0

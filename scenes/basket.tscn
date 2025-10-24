@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwunpr3nthhfr"]
+
+[ext_resource type="Texture2D" uid="uid://bp4b38eyail31" path="res://assets/tilesheet.png" id="1_ccfdg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idgsc"]
+atlas = ExtResource("1_ccfdg")
+region = Rect2(32, 496, 16, 16)
+
+[node name="Basket" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="CenterContainer" type="CenterContainer" parent="GridContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_idgsc")
+
+[node name="MarginContainer2" type="MarginContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="CenterContainer" type="CenterContainer" parent="GridContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/MarginContainer2/CenterContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_idgsc")

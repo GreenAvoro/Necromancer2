@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq8fhxqo5t5it"]
+
+[ext_resource type="Script" uid="uid://cvkpg7uilqfkt" path="res://scripts/enemy.gd" id="1_nle8l"]
+[ext_resource type="Texture2D" uid="uid://b21srjwis8bne" path="res://assets/animations/cursor.png" id="2_pehsa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxsnh"]
+atlas = ExtResource("2_pehsa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1twe5"]
+atlas = ExtResource("2_pehsa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp464"]
+atlas = ExtResource("2_pehsa")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cu8nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxsnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1twe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp464")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1twe5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Enemy" type="Node2D" groups=["enemy"]]
+z_index = 1
+script = ExtResource("1_nle8l")
+
+[node name="Hover" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = -1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_cu8nw")
+autoplay = "default"
+frame_progress = 0.02992
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+animation = &""
+autoplay = "idle"
+flip_h = true

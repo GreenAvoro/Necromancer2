@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhly6m0pmnw18"]
+
+[ext_resource type="Texture2D" uid="uid://dealg8khmts0i" path="res://assets/animations/slime_1.png" id="1_l4687"]
+[ext_resource type="Script" uid="uid://d3nsu6l6dg1em" path="res://scripts/world_enemy.gd" id="1_wmxvq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70k4f"]
+atlas = ExtResource("1_l4687")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvhgh"]
+atlas = ExtResource("1_l4687")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmpes"]
+atlas = ExtResource("1_l4687")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb2hn"]
+atlas = ExtResource("1_l4687")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wib3u"]
+atlas = ExtResource("1_l4687")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwrh3"]
+atlas = ExtResource("1_l4687")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyqy3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70k4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvhgh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmpes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb2hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wib3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwrh3")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0df2"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ocxy2"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqf2y"]
+radius = 48.0
+
+[node name="WorldEnemy" type="CharacterBody2D"]
+script = ExtResource("1_wmxvq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yyqy3")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect"]
+shape = SubResource("CircleShape2D_o0df2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_ocxy2")
+debug_color = Color(0.887599, 0.300104, 0.357626, 0.42)
+
+[node name="StartBattle" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartBattle"]
+shape = SubResource("CircleShape2D_fqf2y")
+debug_color = Color(0.49384, 0.581081, 0.139792, 0.42)
+
+[connection signal="body_entered" from="Detect" to="." method="_on_detect_body_entered"]
+[connection signal="body_exited" from="Detect" to="." method="_on_detect_body_exited"]
+[connection signal="body_entered" from="StartBattle" to="." method="_on_start_battle_body_entered"]

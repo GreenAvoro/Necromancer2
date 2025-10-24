@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dl4gu0pc6l2g2"
+
+[deps]
+
+files=["res://resources/properties.value.translation", "res://resources/properties.target.translation", "res://resources/properties.rarity.translation"]
+
+source_file="res://resources/properties.csv"
+dest_files=["res://resources/properties.value.translation", "res://resources/properties.target.translation", "res://resources/properties.rarity.translation"]
+
+[params]
+
+compress=true
+delimiter=0
